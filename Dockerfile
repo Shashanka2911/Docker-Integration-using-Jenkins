@@ -1,12 +1,13 @@
-# Use lightweight OpenJDK base image
-FROM openjdk:8-jdk-alpine
+# Use stable Temurin JDK base image
+FROM eclipse-temurin:8-jdk-alpine
 
-# Expose application port
+# Expose port 8080 for the Spring Boot app
 EXPOSE 8080
 
-# Copy the built JAR from the target folder into the container
+# Copy the JAR from target folder into container
 ADD target/docker-jenkins-integration-1.0.0.jar app.jar
 
-# Command to run the JAR file
+# Run the JAR file
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+
 
